@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Arrays, Object, and JSON</title>
+</head>
+
+<body>
+
+    <h1 id="myID">Welcome</h1>
+
+    <script>
+        //document.getElementById("myID").innerHTML="New WELCOME Message";
+
+        //math function
+        let arrayLength = 5;
+        for (let i = 0; i < 10; i++) {
+            //Math.randon() -> Generates value from 0 to 1
+            //Math.floor() -> rounds a number downwards to the nearest integer.
+            //can only expect values from 0 - 4 since floor rounds downwards
+            console.log(Math.floor(arrayLength * Math.random()));
+        }
+
+        //add elements to array
+        let array = [];
+
+        for (i = 0; i < 10; i++) {
+            array.push(i);
+        }
+        console.log("Full Array: " + array);
+
+        //removing element using delete & splice
+        delete array[3];
+        console.log("Delete Array: "+array);
+
+        array.splice(1, 5);
+        console.log(array);
+
+        let club ={
+            name: "MDX",
+            //array of objects
+            members: [{
+                name:"Joe",
+                age:21,
+                weight:80
+            },
+            {
+                name:"Tim",
+                age:25,
+                weight:57 
+        }]
+    };
+        console.log(club);
+
+        club.members.push({name:"Howard"});
+        console.log(club);
+
+        let obj_to_str=JSON.stringify(club);
+        console.log(obj_to_str);
+        
+    </script>
+
+</body>

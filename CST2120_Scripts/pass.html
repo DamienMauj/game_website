@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Check Password - Dynamic</title>
+</head>
+
+<body>
+
+    <h1 id="myID">Welcome - Check Password</h1>
+    <input type="password" id="password" onkeyup="checkPass()">
+    <span id="strength">Type Password</span>
+
+
+    <script>
+        let myHeading = document.getElementById("myID");
+        myHeading.innerHTML="Registration";
+
+        function checkPass(){
+            let strength = document.getElementById("strength");
+            /*
+            (?=.*[a-z])      at least 1 lowercase letter
+            (?=.*[A-Z])      at least 1 uppercase letter
+            (?=.*[0-9])      at least 1 digit
+            ([^A-Za-z0-9])   at least 1 special character
+            (?=.{8,})        at least 8 characters long
+            */
+            let strongRegex = RegExp('(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[^A-Za-z0-9])(?=.{8,})');
+            
+            //at least 6 characters long
+            let minRegex = RegExp('(?=.{6,})');
+
+            let pwd = document.getElementById("password");
+
+            if (pwd.value.length==0){
+                strength.innerHTML="Type Password";
+            }else if(minRegex.test(pwd.value)==false){
+                strength.innerHTML="The Password must be at least 6 Characters Long";
+            }else if(strongRegex.test(pwd.value)){
+                strength.innerHTML='<span style="color:green">Strong</span>';
+            }else{
+                strength.innerHTML='<span style="color:red">Weak!!! Please use Uppercase, Lowercase, Number, and Special Character</span>';
+            }
+        }
+    </script>
+</body>
+</html>
