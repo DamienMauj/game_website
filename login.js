@@ -31,8 +31,10 @@ function Register(){
 
     }else if (strongPassword.test(psw_input)==true){
         interactive_password.innerHTML = '<span style="color:green">Password strong ennough</span>';
-        promp_add_information()
-        window.location.href = instruction_page_path
+        email_and_phone = promp_add_information()
+
+
+        // window.location.href = instruction_page_path
     }
 
 };
@@ -40,4 +42,7 @@ function Register(){
 function promp_add_information(){
     let email = prompt("Not mendatory information, enter email");
     let phone_nb = prompt("Not mandatory, enter your phone number");
+    console.log(email);
+    console.log(phone_nb);
+    return [email,phone_nb]
 }
