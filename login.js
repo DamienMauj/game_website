@@ -9,6 +9,10 @@ function Login(){
     interactive_email.innerHTML = "testetsttest";
     console.log(email_input);
     console.log(psw_input)
+
+    for(var i in localStorage){
+        console.log(localStorage[i]);
+    }
 };
 
 function Register(){
