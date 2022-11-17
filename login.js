@@ -1,20 +1,20 @@
 let instruction_page_path = "instruction.php"
 
 function Login(){
-    let username_input = document.getElementById("username").value;
+    let email_input = document.getElementById("email").value;
     let psw_input = document.getElementById("psw").value;
-    let interactive_username = document.getElementById("interactive_login_username");
+    let interactive_email = document.getElementById("interactive_login_email");
     let interactive_password = document.getElementById("interactive_login_password");
 
-    interactive_username.innerHTML = "testetsttest";
-    console.log(username_input);
+    interactive_email.innerHTML = "testetsttest";
+    console.log(email_input);
     console.log(psw_input)
 };
 
 function Register(){
-    let username_input = document.getElementById("username").value;
+    let email_input = document.getElementById("email").value;
     let psw_input = document.getElementById("psw").value;
-    let interactive_username = document.getElementById("interactive_login_username");
+    let interactive_email = document.getElementById("interactive_login_email");
     let interactive_password = document.getElementById("interactive_login_password");
     let form_box = document.getElementById("form")
     // (?=.{8,})        at least 8 characters long
@@ -31,18 +31,24 @@ function Register(){
 
     }else if (strongPassword.test(psw_input)==true){
         interactive_password.innerHTML = '<span style="color:green">Password strong ennough</span>';
-        email_and_phone = promp_add_information()
-
-
+        username_and_phone = promp_add_information()
+        
+        user_dict = {"email": email_input,
+                    "password": psw_input,
+                    "username": username_and_phone[0],
+                    "phone_nb": username_and_phone[1]};
+        localStorage[user_dict.email] = JSON.stringify(user_dict);
+        console.log(localStorage)
+                    
         // window.location.href = instruction_page_path
     }
 
 };
 
 function promp_add_information(){
-    let email = prompt("Not mendatory information, enter email");
+    let username = prompt("Not mendatory information, enter username");
     let phone_nb = prompt("Not mandatory, enter your phone number");
-    console.log(email);
+    console.log(username);
     console.log(phone_nb);
-    return [email,phone_nb]
+    return [username,phone_nb]
 }

@@ -19,9 +19,9 @@
 		<div>
 			<form id="form">
 				<div class="input_batch">
-					<div>username</div>
-					<input type="username" class="form-control" id="username">
-					<div id="interactive_login_username"></div>
+					<div>email</div>
+					<input type="email" class="form-control" id="email" require>
+					<div id="interactive_login_email"></div>
 				</div>
 				<div class="input_batch">
 					<div>password</div>
