@@ -10,10 +10,10 @@ function Login(){
     console.log(email_input);
     console.log(psw_input)
 
-    for(var i in localStorage){
-        console.log(localStorage[i]);
-        // current_user = JSON.parse(localStorage[i])
-        // console.log(current_user["email"])
+    for(let i=0;i <= localStorage.length-1; i++){
+        console.log(localStorage.getItem(localStorage.key(i)));
+        current_user = JSON.parse(localStorage.getItem(localStorage.key(i)))
+        console.log(current_user["email"])
     }
 };
 
