@@ -12,6 +12,8 @@ function Login(){
 
     for(var i in localStorage){
         console.log(localStorage[i]);
+        // current_user = JSON.parse(localStorage[i])
+        // console.log(current_user["email"])
     }
 };
 
@@ -21,12 +23,12 @@ function Register(){
     let interactive_email = document.getElementById("interactive_login_email");
     let interactive_password = document.getElementById("interactive_login_password");
     let form_box = document.getElementById("form")
-    // (?=.{8,})        at least 8 characters long
+    // (?=.{6,})        at least 6 characters long
     // ([^A-Za-z0-9])   at least 1 special character
     // (?=.*[0-9])      at least 1 digit
     interactive_password.innerHTML = ""
     console.log(psw_input)
-    let strongPassword = RegExp('(?=.{8,})([^A-Za-z0-9])(?=.*[0-9])')
+    let strongPassword = RegExp('(?=.{6,})(?=.*[0-9])([^A-Za-z0-9])')
     if (strongPassword.test(psw_input)==false){
         interactive_password.innerHTML = '<span style="color:red">The password is not strong enought</span>';
         form_box.style.background = "#d06d6d"
@@ -40,7 +42,8 @@ function Register(){
         user_dict = {"email": email_input,
                     "password": psw_input,
                     "username": username_and_phone[0],
-                    "phone_nb": username_and_phone[1]};
+                    "phone_nb": username_and_phone[1],
+                    "status": "Active"};
         localStorage[user_dict.email] = JSON.stringify(user_dict);
         console.log(localStorage)
                     
