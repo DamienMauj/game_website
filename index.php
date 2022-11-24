@@ -1,12 +1,11 @@
 <!-- Start of the Html page by calling php function  -->
 <?php
     //Include the PHP functions to be used on the page 
-    include("C:/xampp/htdocs/common/PHP/commun.php"); 
-
+    include("D:\www\common\PHP\commun.php");
     html_start("login");
 ?>
-
-<script src="login.js"></script>
+<!-- 
+<script src="login.js"></script> -->
 
 <!-- Start containt of main body -->
 <div class="login_box">

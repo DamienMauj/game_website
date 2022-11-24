@@ -13,8 +13,10 @@ function html_start($title){
     if($title == "login"){
         echo'    <body class="login">';
     }else{
-        echo'   <body class="body_background">';
+        echo'   <body class="body_background" onload="welcoming_text(),leaderboard()">';
     }
+    echo'   <script src="login.js"></script>';
+
 
     // echo';';
 }
@@ -31,7 +33,7 @@ function header_menu($player_name){
         for ($i=0; $i < count($address); $i++){
             echo'        <li class="center_button"><button class="header_bt" onclick="window.location.href=' . $address[$i]. '">' .$name[$i]. '</button></li>';
         }
-    echo'        <li class="welcoming_text">Welcome <span>' .$player_name. '</span></li>
+    echo'        <li class="welcoming_text">Welcome <span id="Welcome">' .$player_name. '</span></li>
             </ul>
         </div>
     

@@ -1,7 +1,7 @@
 <!-- Start of the Html page by calling php function  -->
 <?php
     //Include the PHP functions to be used on the page 
-    include("C:/xampp/htdocs/common/PHP/commun.php"); 
+    include("D:\www\common\PHP\commun.php"); 
 
     html_start("instruction");
     header_menu("Damien");

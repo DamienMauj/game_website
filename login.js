@@ -81,5 +81,25 @@ function promp_add_information(){
 }
 
 function welcoming_text(){
+    active_player_email = window.sessionStorage.getItem("Active");
+    active_player = active_player_email.split("@")
+    let interactive_welcom = document.getElementById("Welcome");
+    interactive_welcom.innerHTML = active_player[0];
+}
 
+function sort(array){
+    array.sort(function(a, b){return b["points"]-a["points"]});
+    console.log(array);
+}
+
+function leaderboard(){
+    let leaderboard_array = []
+    for(let i=0;i <= localStorage.length-1; i++){
+        console.log(localStorage.getItem(localStorage.key(i)));
+        current_user = JSON.parse(localStorage.getItem(localStorage.key(i)))
+        leaderboard_array.push(current_user);
+        
+    }
+    // console.log(leaderboard_array);
+    sort(leaderboard_array);
 }
