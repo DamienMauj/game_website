@@ -10,10 +10,19 @@ function html_start($title){
             <link href="common/CSS/designe.css" type="text/css" rel="stylesheet">
             <title>' . $title . '</title>
         </head>';
+
     if($title == "login"){
         echo'    <body class="login">';
-    }else{
-        echo'   <body class="body_background" onload="welcoming_text(),leaderboard_fill()">';
+    }
+
+    if($title == "leaderboard"){
+        echo'   <body class="body_background" onload="welcoming_text(),leaderboard_fill(1)">';
+    }
+    if($title == "game"){
+        echo'   <body class="body_background" onload="welcoming_text(),leaderboard_fill(0)">';
+    }
+    else{
+        echo'   <body class="body_background" onload="welcoming_text()">';
     }
     echo'   <script src="login.js"></script>';
 

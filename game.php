@@ -1,6 +1,6 @@
 <!-- Start of the Html page by calling php function  -->
 <?php
-    include("C:/xampp/htdocs/common/PHP/commun.php"); 
+    include("D:\www\common\PHP\commun.php"); 
 
     html_start("game");
     header_menu("Damien");
@@ -18,8 +18,8 @@
                 <th>Header 2</th>
             </tr>
             </thead>
-            <tbody>
-            <tr>
+            <tbody id="leaderboard_data">
+            <!-- <tr>
                 <td>Content 1</td>
                 <td>Content 1</td>
             </tr>
@@ -49,7 +49,7 @@
             <tr>
                 <td>Content 3</td>
                 <td>Content 3</td>
-            </tr>
+            </tr> -->
 
             <tbody>
         </table>

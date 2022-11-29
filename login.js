@@ -92,35 +92,44 @@ function sort(array){
     console.log(array);
 }
 
-function leaderboard_fill(){
-    // let nl = document.querySelector("#leaderboard_data");
+function leaderboard_fill(Leaderboard_size){
+    let nl = document.querySelector("#leaderboard_data");
     let leaderboard_array = []
+    let max_number =7;
+
+    
     for(let i=0;i <= localStorage.length-1; i++){
         console.log(localStorage.getItem(localStorage.key(i)));
         current_user = JSON.parse(localStorage.getItem(localStorage.key(i)))
-        leaderboard_array.push(current_user);
-        
+        leaderboard_array.push(current_user);  
     }
-    console.log(leaderboard_array);
     sort(leaderboard_array);
+    
+    if (Leaderboard_size == 1){
+        var data_index = ["email","points","Time Played","nb_click", "other"];
+    }
+    else if (Leaderboard_size == 0){
+        var data_index = ["email","points"];
+        console.log("lengh : "+ leaderboard_array.length)
+        
+        //condition to not get to uch data on the small game leaderboard
+        if (leaderboard_array.length > max_number){
+            console.log("warning reduce lead")
+            leaderboard_array = leaderboard_array.slice(0,max_number)
+        }
+    }
 
 
     for(let i=0; i<= leaderboard_array.length-1; i++){
         let current_dict = leaderboard_array[i];
         console.log(current_dict)
-        // var tr = nl.insertRow(index);
-    }
+        var tr = nl.insertRow(i);
 
-    // function addDataToTbody(nl, data) { // nl -> NodeList, data -> array with objects
-        // leaderboard_array.forEach((data, index) => {
-        // //   var tr = nl.insertRow(index);
-        // console.log("to see "+index+ " : "+data)
-        //   data.forEach((k, j) => { // Keys from object represent th.innerHTML
-        //     // var cell = tr.insertCell(j);
-        //     // cell.innerHTML = d[k]; // Assign object values to cells
-        //     console.log("test  "+j+ " : "+k+ " --> " );
-        //   });
-        // //   nl.appendChild(tr);
-        // })
+        for(let x=0; x<=data_index.length-1; x++){
+            var cell = tr.insertCell(x);
+            cell.innerHTML = current_dict[data_index[x]];
+
+        nl.appendChild(tr);}
+    }
     
 }

@@ -8,6 +8,7 @@
 
 ?>
 
+
 <!-- Start content of main body -->
 <div class="leaderboard_table">
     <table class="table_element">
@@ -21,7 +22,7 @@
         </tr>
         </thead>
         <tbody id="leaderboard_data">
-        <tr>
+        <!-- <tr>
             <td>Username 1</td>
             <td>data 1</td>
             <td>data 1</td>
@@ -90,7 +91,7 @@
             <td>data 10</td>
             <td>data 10</td>
             <td>data 10</td>
-        </tr>
+        </tr> -->
         <tbody>
     </table>
 </div>
