@@ -92,7 +92,8 @@ function sort(array){
     console.log(array);
 }
 
-function leaderboard(){
+function leaderboard_fill(){
+    // let nl = document.querySelector("#leaderboard_data");
     let leaderboard_array = []
     for(let i=0;i <= localStorage.length-1; i++){
         console.log(localStorage.getItem(localStorage.key(i)));
@@ -100,6 +101,26 @@ function leaderboard(){
         leaderboard_array.push(current_user);
         
     }
-    // console.log(leaderboard_array);
+    console.log(leaderboard_array);
     sort(leaderboard_array);
+
+
+    for(let i=0; i<= leaderboard_array.length-1; i++){
+        let current_dict = leaderboard_array[i];
+        console.log(current_dict)
+        // var tr = nl.insertRow(index);
+    }
+
+    // function addDataToTbody(nl, data) { // nl -> NodeList, data -> array with objects
+        // leaderboard_array.forEach((data, index) => {
+        // //   var tr = nl.insertRow(index);
+        // console.log("to see "+index+ " : "+data)
+        //   data.forEach((k, j) => { // Keys from object represent th.innerHTML
+        //     // var cell = tr.insertCell(j);
+        //     // cell.innerHTML = d[k]; // Assign object values to cells
+        //     console.log("test  "+j+ " : "+k+ " --> " );
+        //   });
+        // //   nl.appendChild(tr);
+        // })
+    
 }

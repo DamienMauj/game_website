@@ -13,7 +13,7 @@ function html_start($title){
     if($title == "login"){
         echo'    <body class="login">';
     }else{
-        echo'   <body class="body_background" onload="welcoming_text(),leaderboard()">';
+        echo'   <body class="body_background" onload="welcoming_text(),leaderboard_fill()">';
     }
     echo'   <script src="login.js"></script>';
 

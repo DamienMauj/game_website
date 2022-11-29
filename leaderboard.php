@@ -1,7 +1,7 @@
 <!-- Start of the Html page by calling php function  -->
 <?php
     //Include the PHP functions to be used on the page 
-    include("C:/xampp/htdocs/common/PHP/commun.php"); 
+    include("D:\www\common\PHP\commun.php"); 
 
     html_start("leaderboard");
     header_menu("Damien");
@@ -20,7 +20,7 @@
             <th>Other</th>
         </tr>
         </thead>
-        <tbody>
+        <tbody id="leaderboard_data">
         <tr>
             <td>Username 1</td>
             <td>data 1</td>
