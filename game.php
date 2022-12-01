@@ -9,7 +9,9 @@
 
 <!-- Start containt of main body -->
 <div class="game_page">
-    <div class="game_canvas"></div>
+    <div id="game_canvas">
+    <img src="common\image\Button-PNG-Image-with-Transparent-Background.png" id="clicker" />
+    </div>
     <div class="short_leaderboard">
         <table class="table_element">
             <thead>

@@ -7,7 +7,7 @@ function html_start($title){
     <!DOCTYPE html>
     <html>
         <head>
-            <link href="common/CSS/designe.css" type="text/css" rel="stylesheet">
+            <link href="common\CSS\designe.css" type="text/css" rel="stylesheet">
             <title>' . $title . '</title>
         </head>';
 
