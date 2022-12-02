@@ -134,5 +134,8 @@ function leaderboard_fill(Leaderboard_size){
     
 }
 
+function game_test(){
+    let canvas = document.getElementById("game_canvas");
+    canvas.onclick = display_image;
 
-
+}

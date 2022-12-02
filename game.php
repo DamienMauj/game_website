@@ -10,8 +10,34 @@
 <!-- Start containt of main body -->
 <div class="game_page">
     <div id="game_canvas">
-    <img src="common\image\Button-PNG-Image-with-Transparent-Background.png" id="clicker" />
+        <img src="common\image\Button-PNG-Image-with-Transparent-Background.png" id="clicker" />
+        <h1 class="clickNumberDisplay"><span id="clickValue">0</span></h1>
+        
+        <ul>
+            <li class="game_button" id="button1" click_by_sec="1">
+
+                <span class="amountOfItem">20</span>
+                <p class="itemHeadline">buyable 1</p>
+                <p class="itemPrice">2</p>
+
+            </li>
+            <li class="game_button" id="button2" click_by_sec="5">
+
+                <span class="amountOfItem">0</span>
+                <p class="itemHeadline">buyable 2</p>
+                <p class="itemPrice">5</p>
+
+            </li>
+        </ul>  
     </div>
+
+
+
+
+
+
+
+
     <div class="short_leaderboard">
         <table class="table_element">
             <thead>
@@ -21,44 +47,13 @@
             </tr>
             </thead>
             <tbody id="leaderboard_data">
-            <!-- <tr>
-                <td>Content 1</td>
-                <td>Content 1</td>
-            </tr>
-            <tr>
-                <td>Content 2</td>
-                <td>Content 2</td>
-
-            </tr>
-            <tr>
-                <td>Content 3</td>
-                <td>Content 3</td>
-
-            </tr>
-            <tr>
-                <td>Content 4</td>
-                <td>Content 4</td>
-
-            </tr>
-            <tr>
-                <td>Content 1</td>
-                <td>Content 1</td>
-            </tr>
-            <tr>
-                <td>Content 2</td>
-                <td>Content 2</td>
-            </tr>
-            <tr>
-                <td>Content 3</td>
-                <td>Content 3</td>
-            </tr> -->
-
             <tbody>
         </table>
     </div>
 
 </div>
-
+<script src="lib/jquery-3.3.1.min.js"></script>
+<script async src="game.js" type="text/javascript"></script>
 <!-- Start of the footer and end of HTML -->
 <?php
     footer();
