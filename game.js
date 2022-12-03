@@ -1,14 +1,36 @@
 game = {}
-var nb_click = 0
-var autoclick_rate = 0
-game.increase_click = function(){
+var nb_click = 1e6
+var autoclick_rate = 500000
+game.unit = [
+    "Million",
+    "Billion"
+]
+game.display_number = function(element, number){
+    if (number >= 1e6){
+        console.log("Number need to be update");
+        let split_num = number.toExponential(5).split("e+");
 
+        //exp to index
+        let exp_num = Math.floor((split_num[1]/3)-2);
+
+        // get round exp to format (1e6,1e9,1e12,...)
+        let exp = "1e" + (split_num[1]-(split_num[1]-(6+(exp_num*3)))).toString()
+
+        // console.log(exp + " --> "+ (split_num[1]-(6+(exp_num*3))));
+        // console.log("convert = "+number/exp+ " unit = "+exp_num);
+
+        element.text(number/exp + " " + game.unit[exp_num]);
+
+    }else{
+        element.text(number);
+    }
 }
 
 
 autoclick = setInterval(function () {
     nb_click = nb_click + autoclick_rate;
-    $("#clickValue").text(nb_click);
+    game.display_number($("#clickValue"),nb_click)
+    // $("#clickValue").text(nb_click);
   }, 1000)
   
 
@@ -17,7 +39,9 @@ $(document).ready(function () {
     $("#clicker").click(function () {
         nb_click +=1;
         console.log(nb_click);
-        $("#clickValue").text(nb_click);
+        var clickValue = $("#clickValue");
+        // clickValue.text(nb_click);
+        game.display_number(clickValue,nb_click)
 
     })
 

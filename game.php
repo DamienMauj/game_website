@@ -16,7 +16,7 @@
         <ul>
             <li class="game_button" id="button1" click_by_sec="1">
 
-                <span class="amountOfItem">20</span>
+                <span class="amountOfItem">0</span>
                 <p class="itemHeadline">buyable 1</p>
                 <p class="itemPrice">2</p>
 
