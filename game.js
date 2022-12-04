@@ -1,6 +1,7 @@
 game = {}
-var nb_click = 1e6
-var autoclick_rate = 500000
+var nb_click = 0
+var autoclick_rate = 0
+var inflation_rate = 1.15
 game.unit = [
     "Million",
     "Billion"
@@ -47,18 +48,40 @@ $(document).ready(function () {
 
     $(".game_button").click(function (){
         var item_id = $(this).attr("id");
-        var ammount = $(this).children()[0]
-        var rate = parseInt($(this).children()[2].textContent)
-        var value = parseInt(ammount.textContent)+1
         
-        console.log(rate)
-        console.log("button click");
-        console.log(item_id);
+        var ammount_element = $(this).children()[0]
+        // var ammount_display_element = ammount_element.textContent
+        var ammount_value = ammount_element.textContent.split(" : ")[1]
 
-        ammount.textContent = value.toString()
-        autoclick_rate = autoclick_rate+ rate
-        console.log("update rate --> "+autoclick_rate)
+        console.log("ammount ->>"+ammount_value);
+
+        var rate = parseInt($(this).attr("price"))
+
+        var value = parseInt(ammount_value)+1
+
+        var price_display_element = $(this).children()[2]
+        var base_price = parseInt($(this).attr("price"))
+        var actual_price = Math.ceil(base_price * Math.pow(value,inflation_rate))
+
+       
+
+        if (nb_click >= actual_price){
+
+            console.log("price -> " + actual_price)
+            console.log("button click");
+            console.log(item_id);
+
+            nb_click = nb_click-actual_price
+            ammount_element.textContent = "Number : "+ value.toString()
+            price_display_element.textContent = "Price : "+actual_price.toString()
+            autoclick_rate = autoclick_rate+ rate
+            console.log("update rate --> "+autoclick_rate)
+
+            console.log("new price --> "+ $(this).attr("price"))
 
 
+        }else{
+            console.log("too expensive");
+        }
     })
 })
