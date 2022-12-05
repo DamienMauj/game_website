@@ -15,6 +15,7 @@
         <h1 class ="clickNumberDisplay"><span id="rate_value">0</span> click/s</h1>
 
         <img src="common\image\space-invaders-png.png" id="ennemy" />
+        <h1 id="end_game_bt">END GAME</h1>
         
         <div class="button_container">
             <ul class="button_list">
@@ -71,8 +72,7 @@
     </div>
 
 </div>
-<script src="lib/jquery-3.3.1.min.js"></script>
-<script async src="game.js" type="text/javascript"></script>
+
 <!-- Start of the footer and end of HTML -->
 <?php
     footer();

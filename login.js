@@ -57,10 +57,10 @@ function Register(){
                     "password": psw_input,
                     "username": username_and_phone[0],
                     "phone_nb": username_and_phone[1],
-                    "points": 0,
-                    "Time Played": 0,
-                    "nb_click": 0,
-                    "other": 0,
+                    "points(click)": 0,
+                    "user_click": 0,
+                    "autoclick_rate": 0,
+                    "total_bonus": 0,
                 };
         localStorage[user_dict.email] = JSON.stringify(user_dict);
         console.log(localStorage)
@@ -106,10 +106,10 @@ function leaderboard_fill(Leaderboard_size){
     sort(leaderboard_array);
     
     if (Leaderboard_size == 1){
-        var data_index = ["email","points","Time Played","nb_click", "other"];
+        var data_index = ["email","points(click)","user_click","autoclick_rate", "total_bonus"];
     }
     else if (Leaderboard_size == 0){
-        var data_index = ["email","points"];
+        var data_index = ["email","points(click)"];
         console.log("lengh : "+ leaderboard_array.length)
         
         //condition to not get to uch data on the small game leaderboard

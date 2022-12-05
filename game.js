@@ -4,12 +4,15 @@ var human_click = 0
 var autoclick_rate = 0
 var inflation_rate = 1.30
 var life_count = 3
+var email_player=sessionStorage.getItem("Active");
+var old_data = JSON.parse(localStorage.getItem(email_player))
 
 
 game.unit = [
     "Million",
     "Billion"
 ]
+
 
 game.ennemy_event =  function(refresh_speed){
     $("#ennemy").css("visibility","visible");
@@ -33,29 +36,29 @@ game.ennemy_event =  function(refresh_speed){
             clearInterval(moving)
         }
     },refresh_speed)
-
-        $("#ennemy").css("left",position_ennemy.toString()+"px");        
-        console.log("3 second pass");
+    
+    $("#ennemy").css("left",position_ennemy.toString()+"px");        
+    console.log("3 second pass");
     // }
-
+    
 }
 
 game.display_number = function(element, number){
     if (number >= 1e6){
         console.log("Number need to be update");
         let split_num = number.toExponential(5).split("e+");
-
+        
         //exp to index
         let exp_num = Math.floor((split_num[1]/3)-2);
 
         // get round exp to format (1e6,1e9,1e12,...)
         let exp = "1e" + (split_num[1]-(split_num[1]-(6+(exp_num*3)))).toString()
-
+        
         // console.log(exp + " --> "+ (split_num[1]-(6+(exp_num*3))));
         // console.log("convert = "+number/exp+ " unit = "+exp_num);
-
+        
         element.text(number/exp + " " + game.unit[exp_num]);
-
+        
     }else{
         element.text(number);
     }
@@ -65,12 +68,11 @@ game.display_number = function(element, number){
 autoclick = setInterval(function () {
     nb_click = nb_click + autoclick_rate;
     game.display_number($("#clickValue"),nb_click)
-    game.display_number($("#rate_value"),autoclick_rate)
-    // $("#clickValue").text(nb_click);
-  }, 1000)
-  
 
-ennymey_appearing = setInterval(function () {
+}, 1000)
+
+
+ennemy_appearing = setInterval(function () {
     let state = $("#ennemy").css("visibility");
     if (state !="visible"){
         let appear_rate_number = 30
@@ -81,16 +83,48 @@ ennymey_appearing = setInterval(function () {
                 console.log("event occurre");
                 game.ennemy_event(100)
             }
-
+            
         }else{
             console.log("too early for ennemy");
         }
     }
 },5000)
-
+game.calculate_total_bonus = function(){
+    console.log($(".game_button"));
+    let total_bonus = 0
+    for (let i=1; i< 5;i++){
+        // let element = $(".button_list").children()[i]
+        let button = $("#button"+i.toString())
+        console.log(button.children()[0].textContent)
+        data_split = button.children()[0].textContent.split(" : ")
+        total_bonus += parseInt(data_split[1])
+        console.log("total_bo ->" + total_bonus);
+    }
+    return total_bonus
+    // let list_button = $(".button_list").children()
+}
+game.end_game = function(data){
+    clearInterval(autoclick)
+    clearInterval(ennemy_appearing)
+    console.log("end game");
+    console.log(data)
+    console.log(data["points(click)"])
+    if (nb_click >data["points(click)"]){
+        console.log("new high score");
+        game.calculate_total_bonus();
+        data["points(click)"] = nb_click;
+        data["user_click"] = human_click;
+        data["autoclick_rate"] = inflation_rate;
+        data["total_bonus"] = game.calculate_total_bonus()
+        console.log(data);
+        localStorage[email_player] = JSON.stringify(data)
+        alert("new high score")
+        window.location.href = "leaderboard.php"
+    }
+}
 
 $(document).ready(function () {
-
+    
     $("#clicker").click(function () {
         human_click +=1;
         nb_click +=1;
@@ -98,9 +132,10 @@ $(document).ready(function () {
         game.display_number(clickValue,nb_click)
 
     })
-
+    
     $(".game_button").click(function (){
         human_click +=1
+        console.log(old_data);
         let item_id = $(this).attr("id");
         
         let ammount_element = $(this).children()[0]
@@ -138,10 +173,9 @@ $(document).ready(function () {
             ammount_element.textContent = "Number : "+ ammount.toString()
             price_display_element.textContent = "Price : "+actual_price.toString()
             autoclick_rate = autoclick_rate+ rate
+            game.display_number($("#rate_value"),autoclick_rate)
             console.log("update rate --> "+autoclick_rate)
 
-        }else{
-            console.log("too expensive -->"+actual_price);
         }
     })
 
@@ -153,6 +187,11 @@ $(document).ready(function () {
         let state_after = $(this).css("visibility");
         console.log("sate ->> " +state_after);
 
+    })
+
+    $("#end_game_bt").click( function(){
+        // console.log(old_data);
+        game.end_game(old_data)
     })
 
 })

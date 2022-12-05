@@ -172,6 +172,10 @@
     left: 450px;
     bottom: 120px;
 }
+#end_game_bt{
+    position: relative;
+    left: 200px
+}
 
 /* ######################################## */
 /* ############## Leaderboard ############# */

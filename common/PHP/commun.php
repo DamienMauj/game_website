@@ -19,7 +19,9 @@ function html_start($title){
         echo'   <body class="body_background" onload="welcoming_text(),leaderboard_fill(1)">';
     }
     if($title == "game"){
-        echo'   <body class="body_background" onload="welcoming_text(),leaderboard_fill(0)">';
+        echo'   <body class="body_background" onload="welcoming_text(),leaderboard_fill(0)">
+                <script src="lib/jquery-3.3.1.min.js"></script>
+                <script async src="game.js" type="text/javascript"></script>';
     }
     // else{
     //     echo'   <body class="body_background" onload="welcoming_text()">';
