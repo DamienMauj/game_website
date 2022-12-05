@@ -12,6 +12,8 @@
     <div id="game_canvas">
         <img src="common\image\Button-PNG-Image-with-Transparent-Background.png" id="clicker" />
         <h1 class="clickNumberDisplay"><span id="clickValue">0</span></h1>
+
+        <img src="common\image\space-invaders-png.png" id="ennemy" />
         
         <ul>
             <li class="game_button" id="button1" click_by_sec="1" price="2">
@@ -23,9 +25,9 @@
             </li>
             <li class="game_button" id="button2" click_by_sec="5" price="5">
 
-                <span class="amountOfItem">0</span>
+                <p>Number : 0</p>
                 <p class="itemHeadline">buyable 2</p>
-                <p class="itemPrice">5</p>
+                <p class="itemPrice">Price : 5</p>
 
             </li>
         </ul>  
