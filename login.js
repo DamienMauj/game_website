@@ -20,7 +20,7 @@ function Login(){
                 window.location.href = instruction_page_path
                 return 0 ;
             }else{
-                console.log("Paaword not good");
+                console.log("Password not good");
                 interactive_password.innerHTML = "Password doesn't match your email";
             }
         }else{
