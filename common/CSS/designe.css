@@ -141,7 +141,7 @@
     position: relative;
     /* left: 0px;
     top: 0px; */
-    bottom: 345px;
+    bottom: 575px;
     overflow-y: auto;
     overflow-x: auto;
     height: 400px;
@@ -175,6 +175,25 @@
 #end_game_bt{
     position: relative;
     left: 200px
+}
+#heart_container{
+    position: relative;
+    /* top: 10px;
+    right: 10px; */
+    bottom: 200px;
+    left: 450px;
+    width: 110px;
+    height: 150px;
+    background: #bc6401;
+}
+#heart1{
+    visibility: visible;
+}
+#heart2{
+    visibility: visible;
+}
+#heart3{
+    visibility: visible;
 }
 
 /* ######################################## */

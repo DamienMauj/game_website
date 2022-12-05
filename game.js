@@ -1,4 +1,3 @@
-game = {}
 var nb_click = 0
 var human_click = 0
 var autoclick_rate = 0
@@ -7,12 +6,11 @@ var life_count = 3
 var email_player=sessionStorage.getItem("Active");
 var old_data = JSON.parse(localStorage.getItem(email_player))
 
-
+game = {}
 game.unit = [
     "Million",
     "Billion"
 ]
-
 
 game.ennemy_event =  function(refresh_speed){
     $("#ennemy").css("visibility","visible");
@@ -29,17 +27,17 @@ game.ennemy_event =  function(refresh_speed){
             $("#ennemy").css("left", "450px");
             console.log("ennemy killed");
             clearInterval(moving)
-        }else if(position_ennemy == 90){
+        }else if(position_ennemy == 250){
             console.log("one life down")
             life_count = life_count-1
             $("#ennemy").css("visibility","hidden");
             clearInterval(moving)
+            game.heart_display()
         }
     },refresh_speed)
     
     $("#ennemy").css("left",position_ennemy.toString()+"px");        
     console.log("3 second pass");
-    // }
     
 }
 
@@ -53,10 +51,6 @@ game.display_number = function(element, number){
 
         // get round exp to format (1e6,1e9,1e12,...)
         let exp = "1e" + (split_num[1]-(split_num[1]-(6+(exp_num*3)))).toString()
-        
-        // console.log(exp + " --> "+ (split_num[1]-(6+(exp_num*3))));
-        // console.log("convert = "+number/exp+ " unit = "+exp_num);
-        
         element.text(number/exp + " " + game.unit[exp_num]);
         
     }else{
@@ -64,31 +58,6 @@ game.display_number = function(element, number){
     }
 }
 
-
-autoclick = setInterval(function () {
-    nb_click = nb_click + autoclick_rate;
-    game.display_number($("#clickValue"),nb_click)
-
-}, 1000)
-
-
-ennemy_appearing = setInterval(function () {
-    let state = $("#ennemy").css("visibility");
-    if (state !="visible"){
-        let appear_rate_number = 30
-        if (nb_click > 200){
-            let random_number =Math.floor(Math.random()*101)
-            console.log("random number --> " + random_number);
-            if (random_number <=appear_rate_number){
-                console.log("event occurre");
-                game.ennemy_event(100)
-            }
-            
-        }else{
-            console.log("too early for ennemy");
-        }
-    }
-},5000)
 game.calculate_total_bonus = function(){
     console.log($(".game_button"));
     let total_bonus = 0
@@ -103,6 +72,7 @@ game.calculate_total_bonus = function(){
     return total_bonus
     // let list_button = $(".button_list").children()
 }
+
 game.end_game = function(data){
     clearInterval(autoclick)
     clearInterval(ennemy_appearing)
@@ -123,6 +93,46 @@ game.end_game = function(data){
     }
 }
 
+game.heart_display = function(){
+    console.log("heart function -> "+life_count);
+    if (life_count == 2){
+        $("#life1").css("visibility","hidden")
+    }else if (life_count == 1){
+        $("#life2").css("visibility","hidden")
+        
+    }else if(life_count == 0){
+        $("#life3").css("visibility","hidden")
+        game.end_game(old_data)
+    }
+}
+autoclick = setInterval(function () {
+    nb_click = nb_click + autoclick_rate;
+    game.display_number($("#clickValue"),nb_click)
+
+}, 1000)
+
+// ##########################################################################
+// Set the intervall function for the game ##################################
+// ##########################################################################
+
+ennemy_appearing = setInterval(function () {
+    let state = $("#ennemy").css("visibility");
+    if (state !="visible"){
+        let appear_rate_number = 90
+        if (nb_click > 0){
+            let random_number =Math.floor(Math.random()*101)
+            console.log("random number --> " + random_number);
+            if (random_number <=appear_rate_number){
+                console.log("event occurre");
+                game.ennemy_event(100)
+            }
+            
+        }else{
+            console.log("too early for ennemy");
+        }
+    }
+},5000)
+
 $(document).ready(function () {
     
     $("#clicker").click(function () {
@@ -142,7 +152,6 @@ $(document).ready(function () {
         // var ammount_display_element = ammount_element.textContent
         let ammount_value = ammount_element.textContent.split(" : ")[1]
 
-        
         let rate = parseInt($(this).attr("price"))
         
         let ammount = parseInt(ammount_value)

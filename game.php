@@ -16,7 +16,13 @@
 
         <img src="common\image\space-invaders-png.png" id="ennemy" />
         <h1 id="end_game_bt">END GAME</h1>
-        
+        <div id="heart_container">
+            <ul>
+                <li><img src="common\image\heart.png" id="life1"></li>
+                <li><img src="common\image\heart.png" id="life2"></li>
+                <li><img src="common\image\heart.png" id="life3"></li>
+            </ul>
+        </div>
         <div class="button_container">
             <ul class="button_list">
                 <li class="game_button" id="button1" click_by_sec="1" price="2">

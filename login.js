@@ -13,7 +13,7 @@ function Login(){
         console.log(localStorage.getItem(localStorage.key(i)));
         current_user = JSON.parse(localStorage.getItem(localStorage.key(i)))
         if(current_user["email"]==email_input){
-            console.log("email corresponf");
+            console.log("email correspond");
             if (current_user['password'] == psw_input){
                 console.log("email and password good, login");
                 window.sessionStorage.setItem("Active", email_input)
