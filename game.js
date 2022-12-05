@@ -3,6 +3,8 @@ var human_click = 0
 var autoclick_rate = 0
 var inflation_rate = 1.30
 var life_count = 3
+var appear_rate_number = 35
+var ennemy_refresh_speed = 800
 var email_player=sessionStorage.getItem("Active");
 var old_data = JSON.parse(localStorage.getItem(email_player))
 
@@ -34,7 +36,7 @@ game.ennemy_event =  function(refresh_speed){
             clearInterval(moving)
             game.heart_display()
         }
-    },refresh_speed)
+    },ennemy_refresh_speed)
     
     $("#ennemy").css("left",position_ennemy.toString()+"px");        
     console.log("3 second pass");
@@ -111,6 +113,22 @@ autoclick = setInterval(function () {
 
 }, 1000)
 
+game.set_difficulty = function(){
+    if(nb_click >1e5){
+        console.log("set difficultys 500-45");
+        ennemy_refresh_speed = 500
+        appear_rate_number = 45
+    }else if(nb_click >1e4){
+        console.log("set difficultys 800-35");
+        ennemy_refresh_speed = 600
+        appear_rate_number = 40
+    }else if(nb_click >1e3){
+        console.log("set difficultys 900-25");
+        ennemy_refresh_speed = 700
+        appear_rate_number = 35
+    }
+}
+
 // ##########################################################################
 // Set the intervall function for the game ##################################
 // ##########################################################################
@@ -118,15 +136,15 @@ autoclick = setInterval(function () {
 ennemy_appearing = setInterval(function () {
     let state = $("#ennemy").css("visibility");
     if (state !="visible"){
-        let appear_rate_number = 90
+        // let appear_rate_number = 90
         if (nb_click > 0){
             let random_number =Math.floor(Math.random()*101)
             console.log("random number --> " + random_number);
             if (random_number <=appear_rate_number){
                 console.log("event occurre");
-                game.ennemy_event(100)
-            }
-            
+                game.set_difficulty()
+                game.ennemy_event(ennemy_refresh_speed)
+            }  
         }else{
             console.log("too early for ennemy");
         }
@@ -152,7 +170,7 @@ $(document).ready(function () {
         // var ammount_display_element = ammount_element.textContent
         let ammount_value = ammount_element.textContent.split(" : ")[1]
 
-        let rate = parseInt($(this).attr("price"))
+        let rate = parseInt($(this).attr("click_by_sec"))
         
         let ammount = parseInt(ammount_value)
         console.log("ammount ->>"+ammount);
