@@ -127,22 +127,50 @@
     width:150px;
     height:150px;
     top : 40px;
-    left: 40px;
+    left: 200px;
     /* object-position: 50px 30px;  */
 }
 .game_button{
-    width: 99%;
-    border-top: 3px solid white;
     border-bottom: 3px solid white;
-    border-right: 3px solid white;
-    padding-left: 10px;
+    /* width: 50px;
+    border-top: 3px solid white;
+    border-left: 3px solid white;
+    padding-left: 10px; */
+}
+.button_container{
+    position: relative;
+    /* left: 0px;
+    top: 0px; */
+    bottom: 345px;
+    overflow-y: auto;
+    overflow-x: auto;
+    height: 400px;
+    width: 150px;
+    background: #bc6401;
+
+}
+.button_list{
+    /* width:700px; */
+    /* display: inline-block; */
+    width: 100px;
     background: linear-gradient(#ffe09f, #ffb84c);
+    list-style-type: none;
+
 }
 
+.clickNumberDisplay{
+    position: relative;
+    left: 200px
+}
 #ennemy{
     width: 50px;
     height: 50px;
     visibility:hidden;
+    position: relative;
+    /* left: 100px; */
+    /* left: 300px; */
+    left: 450px;
+    bottom: 120px;
 }
 
 /* ######################################## */
