@@ -19,7 +19,7 @@
 			<form id="form">
 				<div class="input_batch">
 					<div>email</div>
-					<input type="email" class="form-control" id="email" require>
+					<input type="email" class="form-control" id="email">
 					<div id="interactive_login_email"></div>
 				</div>
 				<div class="input_batch">

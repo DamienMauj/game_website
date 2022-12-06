@@ -9,6 +9,9 @@ function Login(){
     console.log(email_input);
     console.log(psw_input)
 
+    interactive_password.innerHTML = ""
+    interactive_email.innerHTML = ""
+
     for(let i=0;i <= localStorage.length-1; i++){
         console.log(localStorage.getItem(localStorage.key(i)));
         current_user = JSON.parse(localStorage.getItem(localStorage.key(i)))
@@ -37,37 +40,56 @@ function Register(){
     let interactive_email = document.getElementById("interactive_login_email");
     let interactive_password = document.getElementById("interactive_login_password");
     let form_box = document.getElementById("form")
+    let email_already_exist = false
     // (?=.{6,})        at least 6 characters long
     // ([^A-Za-z0-9])   at least 1 special character
     // (?=.*[0-9])      at least 1 digit
     interactive_password.innerHTML = ""
     console.log(psw_input)
     let strongPassword = RegExp('(?=.{6,})(?=.*[0-9])([^A-Za-z0-9])')
-    if (strongPassword.test(psw_input)==false){
-        interactive_password.innerHTML = '<span style="color:red">The password is not strong enought</span>';
-        form_box.style.background = "#d06d6d"
-        setTimeout(1000)
-        form_box.style.background = "#f0f0f0"
 
-    }else if (strongPassword.test(psw_input)==true){
-        interactive_password.innerHTML = '<span style="color:green">Password strong ennough</span>';
-        username_and_phone = promp_add_information()
-        
-        user_dict = {"email": email_input,
-                    "password": psw_input,
-                    "username": username_and_phone[0],
-                    "phone_nb": username_and_phone[1],
-                    "points(click)": 0,
-                    "user_click": 0,
-                    "autoclick_rate": 0,
-                    "total_bonus": 0,
-                };
-        localStorage[user_dict.email] = JSON.stringify(user_dict);
-        console.log(localStorage)
+    for(let i=0;i <= localStorage.length-1; i++){
+        current_user = JSON.parse(localStorage.getItem(localStorage.key(i)))
+        if (current_user["email"] == email_input){
+            console.log("email already exist");
+            email_already_exist = true
+        }
+    }
 
-        window.sessionStorage.setItem("Active", email_input)
-                    
-        window.location.href = instruction_page_path
+    if(email_already_exist == false ){
+        if(psw_input != ""){
+            if (strongPassword.test(psw_input)==false){
+                interactive_password.innerHTML = '<span style="color:red">The password is not strong enought</span>';
+                form_box.style.background = "#d06d6d"
+
+
+            }else if (strongPassword.test(psw_input)==true){
+                interactive_password.innerHTML = '<span style="color:green">Password strong ennough</span>';
+                username_and_phone = promp_add_information()
+                
+                user_dict = {"email": email_input,
+                            "password": psw_input,
+                            "username": username_and_phone[0],
+                            "phone_nb": username_and_phone[1],
+                            "points(click)": 0,
+                            "user_click": 0,
+                            "autoclick_rate": 0,
+                            "total_bonus": 0,
+                        };
+                localStorage[user_dict.email] = JSON.stringify(user_dict);
+                console.log(localStorage)
+
+                window.sessionStorage.setItem("Active", email_input)
+                            
+                window.location.href = instruction_page_path
+            }
+        }else{
+            console.log("email can't be empty")
+            interactive_email.innerHTML = "Email can't be empty"
+        }
+    }else{
+        console.log("no action because email already exist");
+        interactive_email.innerHTML = "Email already exists"
     }
 
 };

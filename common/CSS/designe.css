@@ -331,12 +331,12 @@
 
 #interactive_login_email{
     text-align: left;
-    padding-left: 100px;
+    padding-left: 75px;
     padding-bottom: 5px;
 }
 #interactive_login_password{
     text-align: left;
-    padding-left: 100px;
+    padding-left: 75px;
     padding-bottom: 5px;
 }
 #form{
