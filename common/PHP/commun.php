@@ -40,7 +40,7 @@ function header_menu($player_name){
     echo'
         <div class="header" contextmenu="mymenu">
             <ul>
-            <li class="logo_image"><img src="image\Button-PNG-Image-with-Transparent-Background.png" alt="Game logo" height="40" width="40"></li>';
+            <li class="logo_image"><img src="common\image\Button-PNG-Image-with-Transparent-Background.png" alt="Game logo" height="40" width="40"></li>';
         for ($i=0; $i < count($address); $i++){
             echo'        <li class="center_button"><button class="header_bt" onclick="window.location.href=' . $address[$i]. '">' .$name[$i]. '</button></li>';
         }

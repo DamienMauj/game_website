@@ -88,7 +88,7 @@ function welcoming_text(){
 }
 
 function sort(array){
-    array.sort(function(a, b){return b["points"]-a["points"]});
+    array.sort(function(a, b){return b["points(click)"]-a["points(click)"]});
     console.log(array);
 }
 

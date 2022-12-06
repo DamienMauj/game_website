@@ -114,7 +114,9 @@
     float: left;
     height: 400px;
     width: 700px;
-    background-color: #616572;
+    background-image: url("/common/image/blue-smooth-wall-textured-background2.jpg");
+    background-size: contain;
+    /* background-color: #616572; */
     /* padding-left: 200px; */
     outline: black 3px solid;
     margin-left: 10px;
@@ -126,16 +128,9 @@
     position: relative;
     width:150px;
     height:150px;
-    top : 40px;
-    left: 200px;
+    top : 50px;
+    left: 320px;
     /* object-position: 50px 30px;  */
-}
-.game_button{
-    border-bottom: 3px solid white;
-    /* width: 50px;
-    border-top: 3px solid white;
-    border-left: 3px solid white;
-    padding-left: 10px; */
 }
 .button_container{
     position: relative;
@@ -145,22 +140,47 @@
     overflow-y: auto;
     overflow-x: auto;
     height: 400px;
-    width: 150px;
-    background: #bc6401;
-
+    width: 200px;
+    /* background: #bc6401; */
+    
 }
 .button_list{
     /* width:700px; */
     /* display: inline-block; */
-    width: 100px;
-    background: linear-gradient(#ffe09f, #ffb84c);
+    padding-top: 0;
+    padding-left: 5px;
+    width: 150px;
+    /* background: linear-gradient(#ffe09f, #ffb84c); */
     list-style-type: none;
-
+    
+}
+.game_button{
+    padding-top: 0;
+    border-bottom: 3px solid white;
+    background-color:#bc6401;
+    border-radius: 4px;
+    box-shadow: none;
+    color: black;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: 500;
+    height: 100px;
+    width: 120px;
+    line-height: 1;
+    padding-left: 1rem;
+    padding-right: 2rem;
+    position: relative;
+    text-align: left;
+    text-decoration: none;
+    transition: box-shadow 150ms cubic-bezier(0.61, 1, 0.88, 1);
+    white-space: nowrap;
 }
 
 .clickNumberDisplay{
     position: relative;
-    left: 200px
+    top: 55px;
+    left: 43px;
+    text-align: center;
 }
 #ennemy{
     width: 50px;
@@ -174,18 +194,21 @@
 }
 #end_game_bt{
     position: relative;
-    left: 200px
+    left: 320px;
 }
 #heart_container{
     position: relative;
     /* top: 10px;
     right: 10px; */
-    bottom: 200px;
-    left: 450px;
+    bottom: 190px;
+    left: 600px;
     width: 110px;
     height: 150px;
-    background: #bc6401;
 }
+.heart_list{
+    list-style-type: none;
+}
+
 #heart1{
     visibility: visible;
 }
