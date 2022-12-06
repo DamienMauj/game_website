@@ -14,84 +14,14 @@
     <table class="table_element">
         <thead>
         <tr>
-            <th>Username</th>
-            <th>Points</th>
-            <th>Time Played</th>
-            <th>Nb clicked</th>
-            <th>Other</th>
+            <th>Email</th>
+            <th>Points(click)</th>
+            <th>User Click</th>
+            <th>Autoclick Rate</th>
+            <th>Total Bonus</th>
         </tr>
         </thead>
         <tbody id="leaderboard_data">
-        <!-- <tr>
-            <td>Username 1</td>
-            <td>data 1</td>
-            <td>data 1</td>
-            <td>data 1</td>
-            <td>data 1</td>
-        </tr>
-        <tr>
-            <td>Username 2</td>
-            <td>data 2</td>
-            <td>data 2</td>
-            <td>data 2</td>
-            <td>data 2</td>
-        </tr>
-        <tr>
-            <td>Username 3</td>
-            <td>data 3</td>
-            <td>data 3</td>
-            <td>data 3</td>
-            <td>data 3</td>
-        </tr>
-        <tr>
-            <td>Username 4</td>
-            <td>data 4</td>
-            <td>data 4</td>
-            <td>data 4</td>
-            <td>data 4</td>
-        </tr>
-        <tr>
-            <td>Username 5</td>
-            <td>data 5</td>
-            <td>data 5</td>
-            <td>data 5</td>
-            <td>data 5</td>
-        </tr>
-        <tr>
-            <td>Username 6</td>
-            <td>data 6</td>
-            <td>data 6</td>
-            <td>data 6</td>
-            <td>data 6</td>
-        </tr>
-        <tr>
-            <td>Username 7</td>
-            <td>data 7</td>
-            <td>data 7</td>
-            <td>data 7</td>
-            <td>data 7</td>
-        </tr>
-        <tr>
-            <td>Username 8</td>
-            <td>data 8</td>
-            <td>data 8</td>
-            <td>data 8</td>
-            <td>data 8</td>
-        </tr>
-        <tr>
-            <td>Username 9</td>
-            <td>data 9</td>
-            <td>data 9</td>
-            <td>data 9</td>
-            <td>data 9</td>
-        </tr>
-        <tr>
-            <td>Username 10</td>
-            <td>data 10</td>
-            <td>data 10</td>
-            <td>data 10</td>
-            <td>data 10</td>
-        </tr> -->
         <tbody>
     </table>
 </div>

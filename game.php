@@ -57,19 +57,12 @@
         </div>    
     </div>
 
-
-
-
-
-
-
-
     <div class="short_leaderboard">
         <table class="table_element">
             <thead>
             <tr>
-                <th>Header 1</th>
-                <th>Header 2</th>
+                <th>Email</th>
+                <th>Points</th>
             </tr>
             </thead>
             <tbody id="leaderboard_data">

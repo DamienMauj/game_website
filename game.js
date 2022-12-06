@@ -8,11 +8,11 @@
 // var email_player=sessionStorage.getItem("Active");
 // var old_data = JSON.parse(localStorage.getItem(email_player))
 
-game = {}
-game.unit = [
-    "Million",
-    "Billion"
-]
+
+// game.unit = [
+//     "Million",
+//     "Billion"
+// ]
 
 class Game{
     constructor(){
@@ -23,33 +23,39 @@ class Game{
         this.life_count = 3
         this.appear_rate_number = 35
         this.ennemy_refresh_speed = 800
-        this.email_player=sessionStorage.getItem("Active");
-        this.old_data = JSON.parse(localStorage.getItem(email_player))
+        this.email_player = sessionStorage.getItem("Active");
+        this.old_data = JSON.parse(localStorage.getItem(this.email_player))
+        this.unit = [
+            "Million",
+            "Billion"
+            ]
     }
 
     ennemy_event(refresh_speed){
         $("#ennemy").css("visibility","visible");
-        let position_ennemy = 450
+        let position_ennemy = 640
         $("#ennemy").css("left", position_ennemy.toString()+"px");
     
-        moving = setInterval( function(){
+        var moving = setInterval( function(){
             position_ennemy = position_ennemy -10
             console.log(position_ennemy.toString()+"px");
             $("#ennemy").css("left", position_ennemy.toString()+"px");
-            state = $("#ennemy").css("visibility")
+            let state = $("#ennemy").css("visibility")
             console.log("state -> "+state);
             if (state == "hidden"){
                 $("#ennemy").css("left", "450px");
                 console.log("ennemy killed");
                 clearInterval(moving)
-            }else if(position_ennemy == 250){
+            }else if(position_ennemy == 370){
                 console.log("one life down")
-                this.life_count = this.life_count-1
+                console.log("life -> "+game.life_count);
+                game.life_count = game.life_count-1
+                console.log("life -> "+game.life_count);
                 $("#ennemy").css("visibility","hidden");
-                clearInterval(moving)
                 game.heart_display()
+                clearInterval(moving)
             }
-        },ennemy_refresh_speed)        
+        },game.ennemy_refresh_speed)        
     }
     display_number(element, number){
         if (number >= 1e6){
@@ -75,7 +81,7 @@ class Game{
             // let element = $(".button_list").children()[i]
             let button = $("#button"+i.toString())
             console.log(button.children()[0].textContent)
-            data_split = button.children()[0].textContent.split(" : ")
+            let data_split = button.children()[0].textContent.split(" : ")
             total_bonus += parseInt(data_split[1])
             console.log("total_bo ->" + total_bonus);
         }
@@ -88,15 +94,15 @@ class Game{
         console.log("end game");
         console.log(data)
         console.log(data["points(click)"])
-        if (nb_click >data["points(click)"]){
+        if (this.nb_click >data["points(click)"]){
             console.log("new high score");
             game.calculate_total_bonus();
             data["points(click)"] = this.nb_click;
             data["user_click"] = this.human_click;
-            data["autoclick_rate"] = this.inflation_rate;
+            data["autoclick_rate"] = this.autoclick_rate;
             data["total_bonus"] = game.calculate_total_bonus()
             console.log(data);
-            localStorage[email_player] = JSON.stringify(data)
+            localStorage[this.email_player] = JSON.stringify(data)
             alert("new high score")
             window.location.href = "leaderboard.php"
         }
@@ -114,15 +120,15 @@ class Game{
         }
     }
     set_difficulty(){
-        if(nb_click >1e5){
+        if(this.nb_click >1e5){
             console.log("set difficultys 500-45");
             this.ennemy_refresh_speed = 500
             this.appear_rate_number = 45
-        }else if(nb_click >1e4){
+        }else if(this.nb_click >1e4){
             console.log("set difficultys 800-35");
             this.ennemy_refresh_speed = 600
             this.appear_rate_number = 40
-        }else if(nb_click >1e3){
+        }else if(this.nb_click >1e3){
             console.log("set difficultys 900-25");
             this.ennemy_refresh_speed = 700
             this.appear_rate_number = 35
@@ -231,8 +237,8 @@ var game = new Game();
 //     }
 // }
 autoclick = setInterval(function () {
-    nb_click = nb_click + autoclick_rate;
-    game.display_number($("#clickValue"),nb_click)
+    game.nb_click = game.nb_click + game.autoclick_rate;
+    game.display_number($("#clickValue"),game.nb_click)
 
 }, 1000)
 
@@ -260,13 +266,13 @@ ennemy_appearing = setInterval(function () {
     let state = $("#ennemy").css("visibility");
     if (state !="visible"){
         // let appear_rate_number = 90
-        if (nb_click > 0){
+        if (game.nb_click > 0){
             let random_number =Math.floor(Math.random()*101)
             console.log("random number --> " + random_number);
-            if (random_number <=appear_rate_number){
+            if (random_number <=game.appear_rate_number){
                 console.log("event occurre");
                 game.set_difficulty()
-                game.ennemy_event(ennemy_refresh_speed)
+                game.ennemy_event(game.ennemy_refresh_speed)
             }  
         }else{
             console.log("too early for ennemy");
@@ -277,16 +283,16 @@ ennemy_appearing = setInterval(function () {
 $(document).ready(function () {
     
     $("#clicker").click(function () {
-        human_click +=1;
-        nb_click +=1;
+        game.human_click +=1;
+        game.nb_click +=1;
         let clickValue = $("#clickValue");
-        game.display_number(clickValue,nb_click)
+        game.display_number(clickValue,game.nb_click)
 
     })
     
     $(".game_button").click(function (){
-        human_click +=1
-        console.log(old_data);
+        game.human_click +=1
+        console.log(game.old_data);
         let item_id = $(this).attr("id");
         
         let ammount_element = $(this).children()[0]
@@ -306,31 +312,31 @@ $(document).ready(function () {
             console.log(("first buy"));
             actual_price = base_price
         }else{
-            actual_price = Math.ceil(base_price * Math.pow(inflation_rate,ammount))
+            actual_price = Math.ceil(base_price * Math.pow(game.inflation_rate,ammount))
         }
-        console.log(base_price+" * "+inflation_rate+" ^ "+(ammount) + " = "+actual_price);
+        console.log(base_price+" * "+game.inflation_rate+" ^ "+(ammount) + " = "+actual_price);
         console.log("price -> " + actual_price)
        
 
-        if (nb_click >= actual_price){
-            nb_click = nb_click-actual_price
+        if (game.nb_click >= actual_price){
+            game.nb_click = game.nb_click-actual_price
            
             ammount = ammount+1
-            actual_price = Math.ceil(base_price * Math.pow(inflation_rate,ammount))
+            actual_price = Math.ceil(base_price * Math.pow(game.inflation_rate,ammount))
             console.log("next price -> " + actual_price)
 
-            game.display_number($("#clickValue"),nb_click)
+            game.display_number($("#clickValue"),game.nb_click)
             ammount_element.textContent = "Number : "+ ammount.toString()
             price_display_element.textContent = "Price : "+actual_price.toString()
-            autoclick_rate = autoclick_rate+ rate
-            game.display_number($("#rate_value"),autoclick_rate)
-            console.log("update rate --> "+autoclick_rate)
+            game.autoclick_rate = game.autoclick_rate+ rate
+            game.display_number($("#rate_value"),game.autoclick_rate)
+            console.log("update rate --> "+game.autoclick_rate)
 
         }
     })
 
     $("#ennemy").click(function (){
-        human_click +=1;
+        game.human_click +=1;
         let state = $(this).css("visibility");
         console.log("sate ->> " +state);
         $(this).css("visibility","hidden");
@@ -341,7 +347,7 @@ $(document).ready(function () {
 
     $("#end_game_bt").click( function(){
         // console.log(old_data);
-        game.end_game(old_data)
+        game.end_game(game.old_data)
     })
 
 })

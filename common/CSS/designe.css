@@ -131,6 +131,12 @@
     margin-bottom: 20px;
 }
 
+#game_canvas h1{
+    color: #f0f0f0;
+    font-family: 'Century Gothic';
+
+}
+
 #clicker{
     position: relative;
     width:150px;
@@ -143,61 +149,61 @@
     /* object-position: 50px 30px;  */
 }
 #clicker:hover{
-    /* width: 27%;
-    top: 23%;
-    transition: width 0.2s ease-in-out, top 0.2s ease-in-out; */
     transform: scale(1.2);
-    /* cursor:pointer; */
 }
 #clicker:active{
-    /* width: 23%;
-    top: 27%;
-    transition: width 0.2s ease-in-out, top 0.2s ease-in-out; */
     transform: scale(1.2);
 }
 .button_container{
     position: relative;
-    /* left: 0px;
-    top: 0px; */
-    bottom: 575px;
+    bottom: 582px;
     overflow-y: auto;
     overflow-x: auto;
     height: 400px;
     width: 200px;
-    /* background: #bc6401; */
+    background: #a75a02;
     
 }
 .button_list{
     /* width:700px; */
     /* display: inline-block; */
-    padding-top: 0;
+    /* padding-top: 0; */
     padding-left: 5px;
     width: 150px;
+    /* padding-bottom: 200px; */
     /* background: linear-gradient(#ffe09f, #ffb84c); */
     list-style-type: none;
     
 }
 .game_button{
-    padding-top: 0;
-    border-bottom: 3px solid white;
-    background-color:#bc6401;
-    border-radius: 4px;
-    box-shadow: none;
-    color: black;
-    cursor: pointer;
-    font-size: 1rem;
-    font-weight: 500;
-    height: 120px;
+   
+    border: 5px ;
+    padding: 5px;
+    padding-left: 20px;
+    padding-right: 20px;
+    margin-bottom: 20px;
+    margin-left: 5px;
     width: 120px;
-    line-height: 1;
-    padding-left: 1rem;
-    padding-right: 2rem;
-    position: relative;
-    text-align: left;
-    text-decoration: none;
-    transition: box-shadow 150ms cubic-bezier(0.61, 1, 0.88, 1);
-    white-space: nowrap;
+
+    background-color: #ff8800;
+    cursor: pointer;
+    box-shadow: 0 9px #181511;
+    transition: 0.2s ease-in;  
+    border-radius: 12px;
+    font-family: 'Century Gothic'; 
+    font-size: x-small;
 }
+
+.game_button:hover{
+    background-color: #fcb25e;
+}
+.game_button:active {
+    background-color: #fcb25e;
+    box-shadow: 0 5px #666;
+    transform: translateY(4px);
+    
+}
+
 
 .clickNumberDisplay{
     position: relative;
@@ -212,13 +218,19 @@
     position: relative;
     /* left: 100px; */
     /* left: 300px; */
-    left: 450px;
-    bottom: 120px;
+    left: 640px;
+    bottom: 195px;
+    transition: all 2s;
+}
+.animate_ennemy{
+    transform: scale(2);
 }
 #end_game_bt{
     position: relative;
-    left: 320px;
+    left: 318px;
+    bottom: 10px;
 }
+
 #heart_container{
     position: relative;
     /* top: 10px;
