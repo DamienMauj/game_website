@@ -104,6 +104,13 @@
 
 /*##############################################*/
 /*############### Game Page ####################*/
+@keyframes animation_rotation {
+    100% {
+        -webkit-transform: rotate(360deg);
+        transform: rotate(360deg);
+    }
+}
+
 .game_page{
     display: inline;
     position: relative;
@@ -130,7 +137,23 @@
     height:150px;
     top : 50px;
     left: 320px;
+    animation: rotation 20s linear infinite;
+    cursor:pointer;
+    transition: transform .2s; 
     /* object-position: 50px 30px;  */
+}
+#clicker:hover{
+    /* width: 27%;
+    top: 23%;
+    transition: width 0.2s ease-in-out, top 0.2s ease-in-out; */
+    transform: scale(1.2);
+    /* cursor:pointer; */
+}
+#clicker:active{
+    /* width: 23%;
+    top: 27%;
+    transition: width 0.2s ease-in-out, top 0.2s ease-in-out; */
+    transform: scale(1.2);
 }
 .button_container{
     position: relative;
@@ -164,7 +187,7 @@
     cursor: pointer;
     font-size: 1rem;
     font-weight: 500;
-    height: 100px;
+    height: 120px;
     width: 120px;
     line-height: 1;
     padding-left: 1rem;
