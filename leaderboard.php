@@ -4,7 +4,7 @@
     include("D:\www\common\PHP\commun.php"); 
 
     html_start("leaderboard");
-    header_menu("Damien");
+    header_menu();
 
 ?>
 

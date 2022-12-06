@@ -77,7 +77,7 @@ class Game{
     calculate_total_bonus(){
         console.log($(".game_button"));
         let total_bonus = 0
-        for (let i=1; i< 5;i++){
+        for (let i=1; i< 6;i++){
             // let element = $(".button_list").children()[i]
             let button = $("#button"+i.toString())
             console.log(button.children()[0].textContent)
@@ -125,15 +125,15 @@ class Game{
     set_difficulty(){
         if(this.nb_click >1e5){
             console.log("set difficultys 500-45");
-            this.ennemy_refresh_speed = 500
+            this.ennemy_refresh_speed = 200
             this.appear_rate_number = 45
         }else if(this.nb_click >1e4){
             console.log("set difficultys 800-35");
-            this.ennemy_refresh_speed = 600
+            this.ennemy_refresh_speed = 400
             this.appear_rate_number = 40
         }else if(this.nb_click >1e3){
             console.log("set difficultys 900-25");
-            this.ennemy_refresh_speed = 700
+            this.ennemy_refresh_speed = 500
             this.appear_rate_number = 35
         }
     }

@@ -23,16 +23,15 @@ function html_start($title){
                 <script src="lib/jquery-3.3.1.min.js"></script>
                 <script async src="game.js" type="text/javascript"></script>';
     }
-    // else{
-    //     echo'   <body class="body_background" onload="welcoming_text()">';
-    // }
+    if($title == "instruction"){
+        echo'   <body class="body_background" onload="welcoming_text()">';
+    }
+    
     echo'   <script src="login.js"></script>';
 
-
-    // echo';';
 }
 
-function header_menu($player_name){
+function header_menu(){
     $address = array("'game.php'","'leaderboard.php'","'instruction.php'");
     $name = array("Game","Leaderboard","Rules");
 
@@ -44,7 +43,7 @@ function header_menu($player_name){
         for ($i=0; $i < count($address); $i++){
             echo'        <li class="center_button"><button class="header_bt" onclick="window.location.href=' . $address[$i]. '">' .$name[$i]. '</button></li>';
         }
-    echo'        <li class="welcoming_text">Welcome <span id="Welcome">' .$player_name. '</span></li>
+    echo'        <li class="welcoming_text">Welcome <span id="Welcome"></span></li>
             </ul>
         </div>
     

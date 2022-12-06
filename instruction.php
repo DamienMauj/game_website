@@ -4,7 +4,7 @@
     include("D:\www\common\PHP\commun.php"); 
 
     html_start("instruction");
-    header_menu("Damien");
+    header_menu();
 
 ?>
 
@@ -27,13 +27,13 @@
             point it is only needed to click on the button in the middle 
             of screen. With your points you can buy different bonus on 
             the right of the screen. You will need to click on the different 
-            enemy to kill them before they kill you or by buying defence 
-            on the same shop on the right of the screen.
+            enemy to kill them before they kill you, multiple click may be need
+            this strong ennemy.
 
         </p>
     </div>  
     <div>
-        <img src="common\image\test_image.jpg" alt="Game exemple"> 
+        <img src="common\image\game_screeshot_resize.jpg" alt="Game exemple"> 
     </div>    
 </div>
 

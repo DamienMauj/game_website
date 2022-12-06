@@ -3,7 +3,7 @@
     include("D:\www\common\PHP\commun.php"); 
 
     html_start("game");
-    header_menu("Damien");
+    header_menu();
 
 ?>
 
@@ -28,29 +28,36 @@
                 <li class="game_button" id="button1" click_by_sec="3" price="10">
 
                     <p>Number : 0</p>
-                    <p class="itemHeadline">buyable 1 : +3 c/s</p>
+                    <p class="itemHeadline">brother helping : +3 c/s</p>
                     <p class="itemPrice">Price : 10</p>
 
                 </li>
                 <li class="game_button" id="button2" click_by_sec="6" price="100">
 
                     <p>Number : 0</p>
-                    <p class="itemHeadline">buyable 2 : +3 c/s</p>
+                    <p class="itemHeadline">bot : +6 c/s</p>
                     <p class="itemPrice">Price : 100</p>
 
                 </li>
                 <li class="game_button" id="button3" click_by_sec="150" price="500">
 
                     <p>Number : 0</p>
-                    <p class="itemHeadline">buyable 3 : +3 c/s</p>
+                    <p class="itemHeadline">botnet 3 : +150 c/s</p>
                     <p class="itemPrice">Price : 500</p>
 
                 </li>
                 <li class="game_button" id="button4" click_by_sec="300" price="7500">
 
                     <p>Number : 0</p>
-                    <p class="itemHeadline">buyable 4 : +3 c/s</p>
+                    <p class="itemHeadline"> bug exloitation : +300 c/s</p>
                     <p class="itemPrice">Price : 7500</p>
+
+                </li>
+                <li class="game_button" id="button5" click_by_sec="500" price="50000">
+
+                    <p>Number : 0</p>
+                    <p class="itemHeadline"> Cheat program : +500 c/s</p>
+                    <p class="itemPrice">Price : 50000</p>
 
                 </li>
             </ul>
