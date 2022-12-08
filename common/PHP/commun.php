@@ -27,7 +27,7 @@ function html_start($title){
         echo'   <body class="body_background" onload="welcoming_text()">';
     }
     
-    echo'   <script src="login.js"></script>';
+    echo'   <script src="common\JS\commun.js"></script>';
 
 }
 
