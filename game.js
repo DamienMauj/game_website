@@ -1,18 +1,3 @@
-// var nb_click = 0
-// var human_click = 0
-// var autoclick_rate = 0
-// var inflation_rate = 1.30
-// var life_count = 3
-// var appear_rate_number = 35
-// var ennemy_refresh_speed = 800
-// var email_player=sessionStorage.getItem("Active");
-// var old_data = JSON.parse(localStorage.getItem(email_player))
-
-
-// game.unit = [
-//     "Million",
-//     "Billion"
-// ]
 
 class Game{
     constructor(){
@@ -30,22 +15,26 @@ class Game{
             "Billion"
             ]
     }
-
+    // Function managing the ennemy movement
     ennemy_event(refresh_speed){
+
         $("#ennemy").css("visibility","visible");
         let position_ennemy = 640
         $("#ennemy").css("left", position_ennemy.toString()+"px");
     
+        //Intervall for moving the ennemy
         var moving = setInterval( function(){
             position_ennemy = position_ennemy -10
             console.log(position_ennemy.toString()+"px");
             $("#ennemy").css("left", position_ennemy.toString()+"px");
             let state = $("#ennemy").css("visibility")
             console.log("state -> "+state);
+            // if the user have killed the ennemy
             if (state == "hidden"){
                 $("#ennemy").css("left", "640px");
                 console.log("ennemy killed");
                 clearInterval(moving)
+            // if the ennemy hit the button
             }else if(position_ennemy == 370){
                 console.log("one life down")
                 console.log("life -> "+game.life_count);
@@ -57,6 +46,8 @@ class Game{
             }
         },game.ennemy_refresh_speed)        
     }
+
+    // Function to display number in a precise element and format if too big
     display_number(element, number){
         if (number >= 1e6){
             console.log("Number need to be update");
@@ -74,6 +65,7 @@ class Game{
         }
     }
 
+    // Gather total bonus buyed when game end
     calculate_total_bonus(){
         console.log($(".game_button"));
         let total_bonus = 0
@@ -88,12 +80,14 @@ class Game{
         return total_bonus
     }
 
+    // Function when the game end
     end_game(data){
         clearInterval(autoclick)
         clearInterval(ennemy_appearing)
         console.log("end game");
         console.log(data)
         console.log(data["points(click)"])
+        // Check if it's a new highscore
         if (this.nb_click >data["points(click)"]){
             console.log("new high score");
             game.calculate_total_bonus();
@@ -102,6 +96,7 @@ class Game{
             data["autoclick_rate"] = this.autoclick_rate;
             data["total_bonus"] = game.calculate_total_bonus()
             console.log(data);
+            // Put new data in localstorage
             localStorage[this.email_player] = JSON.stringify(data)
             alert("new high score")
             window.location.href = "leaderboard.php"
@@ -110,6 +105,8 @@ class Game{
             window.location.href = "leaderboard.php"
         }
     }
+
+    // Function managing the display of the hearts
     heart_display(){
         console.log("heart function -> "+this.life_count);
         if (this.life_count == 2){
@@ -122,6 +119,8 @@ class Game{
             game.end_game(this.old_data)
         }
     }
+
+    // Function managing the difficulty throught the game
     set_difficulty(){
         if(this.nb_click >1e5){
             console.log("set difficultys 500-45");
@@ -144,20 +143,18 @@ var game = new Game();
 
 
 
+// ##########################################################################
+// Set the intervall function for the game ##################################
+// ##########################################################################
 
-
-
+//Interval managing the autoclick rate
 autoclick = setInterval(function () {
     game.nb_click = game.nb_click + game.autoclick_rate;
     game.display_number($("#clickValue"),game.nb_click)
 
 }, 1000)
 
-
-// ##########################################################################
-// Set the intervall function for the game ##################################
-// ##########################################################################
-
+// Intervall managing if a ennemy appear or not
 ennemy_appearing = setInterval(function () {
     let state = $("#ennemy").css("visibility");
     if (state !="visible"){
@@ -177,8 +174,10 @@ ennemy_appearing = setInterval(function () {
     }
 },5000)
 
+// All the differents button managing for the game
 $(document).ready(function () {
     
+    // If click on the main button
     $("#clicker").click(function () {
         game.human_click +=1;
         game.nb_click +=1;
@@ -187,33 +186,30 @@ $(document).ready(function () {
 
     })
     
+    // If click on a button in the shop
     $(".game_button").click(function (){
         game.human_click +=1
-        console.log(game.old_data);
-        let item_id = $(this).attr("id");
-        
+
         let ammount_element = $(this).children()[0]
-        // var ammount_display_element = ammount_element.textContent
         let ammount_value = ammount_element.textContent.split(" : ")[1]
-
         let rate = parseInt($(this).attr("click_by_sec"))
-        
         let ammount = parseInt(ammount_value)
-        console.log("ammount ->>"+ammount);
-
         let price_display_element = $(this).children()[2]
         let base_price = parseInt($(this).attr("price"))
-        // let actual_price = Math.ceil(base_price * Math.pow((ammount),inflation_rate))
         let actual_price
+        console.log("ammount ->>"+ammount);
+
+        
         if (ammount ==0){
             console.log(("first buy"));
             actual_price = base_price
-        }else{
+        }
+        // Calculate the price of the item
+        else{
             actual_price = Math.ceil(base_price * Math.pow(game.inflation_rate,ammount))
         }
-        console.log(base_price+" * "+game.inflation_rate+" ^ "+(ammount) + " = "+actual_price);
-        console.log("price -> " + actual_price)
-       
+
+        console.log("price -> " + actual_price)       
 
         if (game.nb_click >= actual_price){
             game.nb_click = game.nb_click-actual_price
@@ -232,6 +228,7 @@ $(document).ready(function () {
         }
     })
 
+    // if click on an ennemy
     $("#ennemy").click(function (){
         game.human_click +=1;
         let state = $(this).css("visibility");
@@ -242,6 +239,7 @@ $(document).ready(function () {
 
     })
 
+    // If click on the end game button
     $("#end_game_bt").click( function(){
         // console.log(old_data);
         game.end_game(game.old_data)

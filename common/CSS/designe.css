@@ -71,7 +71,6 @@
 /* #################################### */
 /* ############## footer ############## */
 .footer{
-    /* background-color:rgb(162, 33, 33); */
     left: 10px;  
     bottom: 5px;  
     right: 10px; 
@@ -123,8 +122,6 @@
     width: 700px;
     background-image: url("/common/image/blue-smooth-wall-textured-background2.jpg");
     background-size: contain;
-    /* background-color: #616572; */
-    /* padding-left: 200px; */
     outline: black 3px solid;
     margin-left: 10px;
     margin-top: 30px;
@@ -146,7 +143,6 @@
     animation: rotation 20s linear infinite;
     cursor:pointer;
     transition: transform .2s; 
-    /* object-position: 50px 30px;  */
 }
 #clicker:hover{
     transform: scale(1.2);
@@ -165,13 +161,8 @@
     
 }
 .button_list{
-    /* width:700px; */
-    /* display: inline-block; */
-    /* padding-top: 0; */
     padding-left: 5px;
     width: 150px;
-    /* padding-bottom: 200px; */
-    /* background: linear-gradient(#ffe09f, #ffb84c); */
     list-style-type: none;
     
 }
@@ -216,8 +207,6 @@
     height: 50px;
     visibility:hidden;
     position: relative;
-    /* left: 100px; */
-    /* left: 300px; */
     left: 640px;
     bottom: 195px;
     transition: all 2s;
@@ -233,8 +222,6 @@
 
 #heart_container{
     position: relative;
-    /* top: 10px;
-    right: 10px; */
     bottom: 190px;
     left: 600px;
     width: 110px;
@@ -262,7 +249,6 @@
     height: 400px;
     width: 400px;
     background-color: #2D3142;
-    /* padding-left: 200px; */
     margin-right: 50px;
     margin-top: 30px;
     margin-bottom: 20px;
